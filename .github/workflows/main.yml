@@ -1,4 +1,4 @@
-name: windows - Iperius Remte
+name: Windows - Iperius Remote
 
 on:
   workflow_dispatch:
@@ -6,17 +6,17 @@ on:
 jobs:
   build:
     name: Start Building...
-    runs-on: Windows-latest
+    runs-on: windows-latest
     timeout-minutes: 9999
-
+    
     steps:
-      - name: Downloading & Installing Essentials and Connect to IPRUSYa
-        run:
-          Invoke-WebRequest -Uri "https://gitlab.com/chamod12/iperius_win-10_github_rdp/-/blob/main/down.bat" -OutFile "Downloads.bat"
+      - name: Downloading & Installing Essentials
+        run: |
+          Invoke-WebRequest -Uri "https://gitlab.com/chamod12/iperius_win-10_github_rdp/-/raw/main/down.bat" -OutFile "Downloads.bat"
           cmd /c Downloads.bat
-          
-      - name: Connect to IPRUSYa
+
+      - name: Connect to LiteManager
         run: cmd /c show.bat
 
-      - name: timer counter
+      - name: Time Counter
         run: cmd /c loop.bat
